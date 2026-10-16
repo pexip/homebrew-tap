@@ -1,8 +1,2 @@
-yarn.lock
 **/.DS_store
 .idea
-# IDE run configurations; these carry endpoint credentials and must never be committed.
-.run/
-build/
-dist/
-.vscode
