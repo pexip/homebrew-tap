@@ -4,9 +4,10 @@ Homebrew formulae for Pexip tools.
 
 ## Available formulae
 
-| Formula    | Version | Description                                                    | Platforms                   |
-| ---------- | ------- | -------------------------------------------------------------- | --------------------------- |
-| `vsclient` | 1.3     | Pexip Endpoint Provisioning Tool (endpoint management CLI)     | macOS (Apple Silicon/Intel) |
+| Formula      | Version   | Description                                                    | Platforms                   |
+| ------------ | --------- | -------------------------------------------------------------- | --------------------------- |
+| `vsclient`   | 1.3       | Pexip Endpoint Provisioning Tool (endpoint management CLI)     | macOS (Apple Silicon/Intel) |
+| `vsclient@2` | 2.0-BETA1 | Pexip Endpoint Provisioning Tool, latest 2.x beta              | macOS (Apple Silicon/Intel) |
 
 ## How do I install these formulae?
 
@@ -29,6 +30,18 @@ vsclient --help
 ```
 
 Upgrade to the latest version with `brew upgrade vsclient`.
+
+### vsclient@2 (beta)
+
+Installs the latest 2.x beta. It provides the same `vsclient` command as `vsclient`, so only one of the two can be installed at a time:
+
+```sh
+brew uninstall vsclient   # if installed
+brew install pexip/tap/vsclient@2
+vsclient version
+```
+
+Switch back with `brew uninstall vsclient@2 && brew install pexip/tap/vsclient`.
 
 ## Updating a formula
 
@@ -60,6 +73,15 @@ To release a new version:
    ```
 
    Clean up afterwards with `brew uninstall vsclient && brew untap pexip/tap`.
+
+### vsclient@2
+
+Ship a new beta with the same steps in `Formula/vsclient@2.rb`, with these differences:
+
+- Each zip contains an arch-suffixed binary (`vsclient_darwin_arm64` / `vsclient_darwin_amd64`), which `install` renames to `vsclient`. Check the new zips with `unzip -l` in case the file names change.
+- `brew style Formula/vsclient@2.rb` run against the checkout reports a `FormulaAudit/Conflicts` offense. Homebrew only reads the tap's `style_exceptions/` allowlist for tapped formulae, so lint with `brew style pexip/tap/vsclient@2` after `brew tap pexip/tap "$PWD"`.
+- The test runs `vsclient version`, because the 2.x `--help` output doesn't include the version.
+- Update the version in the "Available formulae" table.
 
 ## Documentation
 

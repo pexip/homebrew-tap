@@ -16,6 +16,8 @@ class Vsclient < Formula
     end
   end
 
+  conflicts_with "vsclient@2", because: "both install a `vsclient` binary"
+
   def install
     chmod 0755, "vsclient"
     bin.install "vsclient"
