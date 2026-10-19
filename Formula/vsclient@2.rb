@@ -8,7 +8,7 @@ class VsclientAT2 < Formula
   on_macos do
     on_arm do
       url "https://s3.eu-west-1.amazonaws.com/download.vmr.vc/public/software/vsclient/v2.0-BETA1/vsclient_darwin_arm64.zip"
-      sha256 "d9a8d4f40ccf43efc585e72a2d2d9e515f040d798c492b13f11f7343f57fd525"
+      sha256 "f1943aa13424fd217aae9dfe98dc8eda2f9de7e965f89afac77653213187e47f"
     end
     on_intel do
       url "https://s3.eu-west-1.amazonaws.com/download.vmr.vc/public/software/vsclient/v2.0-BETA1/vsclient_darwin_amd64.zip"
